@@ -41,11 +41,7 @@ setup(
     # choose your license
     license='BSD-3',
     include_package_data=True,
-    classifiers=[
-        'Development Status :: 3 - Beta',
-        'License :: OSI Approved :: BSD License',
-        'Programming Language :: Python :: 3'
-    ],
+    classifiers=[],
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     tests_require=test_deps,
     # add package dependencies
