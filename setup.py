@@ -33,6 +33,7 @@ setup(
     version=__version__,
     description='A utility for creating sets of templated indexes for local or remote directories.',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/Knowledge-Graph-Hub/multi-indexer',
     author='Harry Caufield',
     author_email='',
