@@ -13,7 +13,7 @@ def read(*parts):
     with copen(os.path.join(here, *parts), 'r') as fp:
         return fp.read()
 
-__version__ = "0.0.1"
+__version__ = "0.0.3"
 
 test_deps = [
     'pytest',
@@ -33,6 +33,7 @@ setup(
     version=__version__,
     description='A utility for creating sets of templated indexes for local or remote directories.',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/Knowledge-Graph-Hub/multi-indexer',
     author='Harry Caufield',
     author_email='',
@@ -41,11 +42,7 @@ setup(
     # choose your license
     license='BSD-3',
     include_package_data=True,
-    classifiers=[
-        'Development Status :: 3 - Beta',
-        'License :: OSI Approved :: BSD License',
-        'Programming Language :: Python :: 3'
-    ],
+    classifiers=[],
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     tests_require=test_deps,
     # add package dependencies
