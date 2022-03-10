@@ -12,9 +12,28 @@ Local indexing is *recursive* - it will index subfolders relative to the provide
 
 Remote indexing is *not recursive* - it will create a single index for the provided path only.
 
+## Installation
+
+Install with `pip`:
+
+`pip install multi-indexer`
+
 ## Usage
 
+The package may be imported as `multi_indexer`, though the `main()` function provides most of the functionality.
+
+By default, no files will be written or uploaded unless `multi-indexer` is passed the `-x`/`--execute` flag.
+
+You can find an example HTML template at the project repository:
+
+https://github.com/Knowledge-Graph-Hub/multi-indexer/blob/main/directory-index-template.html
+
+This is also the template the multi-indexer will use if no template is provided.
+
 ### Example usage for local indexing, just for local testing
+
+This assumes that `directory-index-template.html` is present in your current working directory.
+
 ```
 mkdir -p /tmp/foo/bar/bib/bab && mkdir -p /tmp/foo/bar/fish && mkdir -p /tmp/foo/bar/foul
 touch /tmp/foo/top.md && touch /tmp/foo/bar/bib/bab/bottom.txt && touch /tmp/foo/bar/fish/trout.f && touch /tmp/foo/bar/fish/bass.f
