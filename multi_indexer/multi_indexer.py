@@ -20,6 +20,66 @@ LOG.setLevel(logging.WARNING)
 
 IFILENAME = "index.html"
 
+DEFAULT_TEMPLATE = """
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+	  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html lang="en">
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+
+    <meta charset="utf-8">
+
+    <title>Directory index for {{ location }}</title>
+
+  </head>
+
+  <body>
+
+    <h5>Parent</h5>
+    <ul>
+      {{ #parent }}
+      <li>
+	<a href="{{ parent }}">..</a>
+      </li>
+      {{ /parent }}
+      {{ ^parent }}
+      <li>
+	No parent directory
+      </li>
+      {{ /parent }}
+    </ul>
+
+    <h5>Directories</h5>
+    <ul>
+      {{ #children }}
+      <li>
+	<a href="{{ url }}">{{ name }}</a>
+      </li>
+      {{ /children }}
+      {{ ^children }}
+      <li>
+	No sub-directories in this directory.
+      </li>
+      {{ /children }}
+    </ul>
+
+    <h5>Files</h5>
+    <ul>
+      {{ #current }}
+      <li>
+	<a href="{{ url }}">{{ name }}</a>
+      </li>
+      {{ /current }}
+      {{ ^current }}
+      <li>
+	No files in this directory.
+      </li>
+      {{ /current }}
+    </ul>
+
+  </body>
+</html>
+"""
+
 def die_screaming(instr):
     """Make sure we exit in a way that will get Jenkins's attention."""
     LOG.error(instr)
@@ -37,7 +97,7 @@ def main():
     parser = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('-i', '--inject', required=True,
+    parser.add_argument('-i', '--inject',
                         help='Mustache template file to inject into')
     parser.add_argument('-d', '--directory',
                         help='The directory to copy from')
@@ -64,11 +124,15 @@ def main():
     else:
         LOG.info('Will do a dry run.')
 
-    ## Get template in hand.
-    LOG.info('Will inject into: ' + args.inject)
-    output_template = None
-    with open(args.inject) as fhandle:
-        output_template = fhandle.read()
+    # Get template in hand.
+    # If not provided, default will be used
+    if not args.inject:
+        output_template = DEFAULT_TEMPLATE
+    else:
+        LOG.info('Will inject into: ' + args.inject)
+        output_template = None
+        with open(args.inject) as fhandle:
+            output_template = fhandle.read()
 
     if not args.prefix.endswith("/"):
         prefix = "{}/".format(args.prefix)
