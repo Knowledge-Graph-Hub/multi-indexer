@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # multi_indexer.py
 """
 The primary multi_indexer runfile.

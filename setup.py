@@ -13,7 +13,7 @@ def read(*parts):
     with copen(os.path.join(here, *parts), 'r') as fp:
         return fp.read()
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 test_deps = [
     'pytest',
