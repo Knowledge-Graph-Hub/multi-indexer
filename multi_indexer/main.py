@@ -100,6 +100,7 @@ def main():
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-i', '--inject',
+                        nargs='?', required=False,
                         help='Mustache template file to inject into')
     parser.add_argument('-d', '--directory',
                         help='The directory to copy from')
