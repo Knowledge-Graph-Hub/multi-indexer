@@ -22,23 +22,18 @@ Install with `pip`:
 
 Run from the command line as `python -m multi_indexer`.
 
-### Arguments:
+### Arguments
 
-  -i INJECT, --inject INJECT        Mustache template file to inject into
-
-  -d DIRECTORY, --directory DIRECTORY       The directory to copy from
-
-  -p PREFIX, --prefix PREFIX        The prefix to add to all files and links
-
-  -x, --execute     Actually run--not the default dry run
-
-  -u, --up      Release version, where pages have a link pointing up one level
-
-  -v, --verbose     More verbose output
-
-  -b BUCKET, --bucket BUCKET        Name of S3 bucket, if creating index for remote directory
-
-  -r REMOTE_DIRECTORY, --remote_directory REMOTE_DIRECTORY      Name of S3 remote directory (without leading / ), if creating index for it
+| Argument            | Long Argument                             | Description                                                               |
+|---------------------|-------------------------------------------|---------------------------------------------------------------------------|
+| -i INJECT           | --inject INJECT                           | Mustache template file to inject into                                     |
+| -d DIRECTORY        | --directory DIRECTORY                     | The directory to copy from                                                |
+| -p PREFIX           | --prefix PREFIX                           | The prefix to add to all files and links                                  |
+| -x                  | --execute                                 | Actually run--not the default dry run                                     |
+| -u                  | --up                                      | Release version, where pages have a link pointing up one level            |
+| -v                  | --verbose                                 | More verbose output                                                       |
+| -b BUCKET           | --bucket BUCKET                           | Name of S3 bucket if creating index for remote directory                  |
+| -r REMOTE_DIRECTORY | --remote_directory REMOTE_DIRECTORY       | Name of S3 remote directory (without leading / ) if creating index for it |
 
 The package may be imported as `multi_indexer`, though the `main()` function provides most of the functionality.
 
