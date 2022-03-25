@@ -13,7 +13,7 @@ def read(*parts):
     with copen(os.path.join(here, *parts), 'r') as fp:
         return fp.read()
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 test_deps = [
     'pytest',
@@ -38,14 +38,12 @@ setup(
     author='Harry Caufield',
     author_email='',
     python_requires='>=3.7',
-
-    # choose your license
     license='BSD-3',
     include_package_data=True,
     classifiers=[],
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
+    entry_points={'console_scripts': ['multi_indexer=multi_indexer.main:main']},
     tests_require=test_deps,
-    # add package dependencies
     install_requires=[
         'boto3',
         'pystache', 
