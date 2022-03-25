@@ -22,15 +22,22 @@ Install with `pip`:
 
 Run from the command line as `python -m multi_indexer`.
 
-Arguments:
+### Arguments:
 
   -i INJECT, --inject INJECT        Mustache template file to inject into
+
   -d DIRECTORY, --directory DIRECTORY       The directory to copy from
+
   -p PREFIX, --prefix PREFIX        The prefix to add to all files and links
+
   -x, --execute     Actually run--not the default dry run
+
   -u, --up      Release version, where pages have a link pointing up one level
+
   -v, --verbose     More verbose output
+
   -b BUCKET, --bucket BUCKET        Name of S3 bucket, if creating index for remote directory
+
   -r REMOTE_DIRECTORY, --remote_directory REMOTE_DIRECTORY      Name of S3 remote directory (without leading / ), if creating index for it
 
 The package may be imported as `multi_indexer`, though the `main()` function provides most of the functionality.
@@ -50,17 +57,17 @@ This assumes that `directory-index-template.html` is present in your current wor
 ```
 mkdir -p /tmp/foo/bar/bib/bab && mkdir -p /tmp/foo/bar/fish && mkdir -p /tmp/foo/bar/foul
 touch /tmp/foo/top.md && touch /tmp/foo/bar/bib/bab/bottom.txt && touch /tmp/foo/bar/fish/trout.f && touch /tmp/foo/bar/fish/bass.f
-python -m multi_indexer -v --inject ./directory-index-template.html --directory /tmp/foo --prefix file:///tmp/foo -x
+multi_indexer -v --inject ./directory-index-template.html --directory /tmp/foo --prefix file:///tmp/foo -x
 ```
 
 ### Example usage for local indexing, assuming indexes will be uploaded:
 ```
-python -m multi_indexer -v --inject ./directory-index-template.html --directory $WORKSPACE/mnt --prefix https://soyouhave.afancy.website/$PROJECTDIR/ -x'
+multi_indexer -v --inject ./directory-index-template.html --directory $WORKSPACE/mnt --prefix https://soyouhave.afancy.website/$PROJECTDIR/ -x'
 ```
 
 ### Example usage for remote indexing:
 ```
-python -m multi_indexer -v --inject ./directory-index-template.html --prefix https://soyouhave.afancy.website/$PROJECTDIR/ -b a-bucket-name -r $PROJECTDIR -x'
+multi_indexer -v --inject ./directory-index-template.html --prefix https://soyouhave.afancy.website/$PROJECTDIR/ -b a-bucket-name -r $PROJECTDIR -x'
 ```
 
 ## Credits
